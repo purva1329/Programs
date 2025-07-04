@@ -1,0 +1,67 @@
+// pages/index.js
+import { useState } from 'react';
+
+const quizData = [
+  {
+    question: 'What is the full form of HTML?',
+    options: ['Hyper Text Markup Language', 'High Text Machine Language', 'Home Tool Markup Language'],
+    answer: 'Hyper Text Markup Language',
+  },
+  {
+    question: 'Which one is a styling language?',
+    options: ['HTML', 'CSS', 'C++'],
+    answer: 'CSS',
+  },
+  {
+    question: 'Which language is used to add interactivity?',
+    options: ['CSS', 'Python', 'JavaScript'],
+    answer: 'JavaScript',
+  },
+];
+
+export default function Home() {
+  const [current, setCurrent] = useState(0);
+  const [score, setScore] = useState(0);
+  const [showResult, setShowResult] = useState(false);
+
+  const handleAnswer = (option) => {
+    if (option === quizData[current].answer) {
+      setScore(score + 1);
+    }
+    if (current + 1 < quizData.length) {
+      setCurrent(current + 1);
+    } else {
+      setShowResult(true);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-r from-purple-300 to-pink-400 flex items-center justify-center">
+      <div className="bg-white p-6 rounded-2xl shadow-xl w-full max-w-md text-center">
+        <h1 className="text-3xl font-bold mb-4">Quiz</h1>
+        {!showResult ? (
+          <>
+            <h2 className="text-xl mb-4">{quizData[current].question}</h2>
+            <div className="space-y-2">
+              {quizData[current].options.map((option, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleAnswer(option)}
+                  className="w-full py-2 px-4 bg-indigo-100 text-indigo-700 rounded hover:bg-indigo-200"
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+            <p className="mt-4 text-green-600">Score: {score}</p>
+          </>
+        ) : (
+          <>
+            <h2 className="text-2xl font-semibold">Quiz Completed 🎉</h2>
+            <p className="mt-4 text-lg">Your score: {score} / {quizData.length}</p>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
