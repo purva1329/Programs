@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz Card - Purvashinde</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f1f5f9;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    h1 {
+      color: #2e1065;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      width: 300px;
+      height: 200px;
+      perspective: 1000px;
+    }
+
+    .inner-card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    .card:hover .inner-card {
+      transform: rotateY(180deg);
+    }
+
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .front {
+      background: #6366f1;
+      color: white;
+      font-size: 1.2em;
+    }
+
+    .back {
+      background: #f59e0b;
+      color: white;
+      transform: rotateY(180deg);
+      font-size: 1.2em;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Purvashinde's Quiz Card</h1>
+
+  <div class="card">
+    <div class="inner-card">
+      <div class="front">
+        What does HTML stand for?
+      </div>
+      <div class="back">
+        HyperText Markup Language
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Hover to flip the card</div>
+
+</body>
+</html>
