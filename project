@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Purva's Like Counter</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #111;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      color: #ff6ec4;
+    }
+
+    .counter-container {
+      text-align: center;
+    }
+
+    .heart {
+      font-size: 80px;
+      color: #ff4b91;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .heart:hover {
+      transform: scale(1.1);
+    }
+
+    .heart.clicked {
+      animation: pulse 0.4s ease;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.4); }
+      100% { transform: scale(1); }
+    }
+
+    .count {
+      font-size: 2em;
+      margin-top: 10px;
+      color: #ffb3ec;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="counter-container">
+    <h1>purvashinde</h1>
+    <div class="heart" id="heart">💖</div>
+    <div class="count" id="count">0</div>
+  </div>
+
+  <script>
+    const heart = document.getElementById("heart");
+    const count = document.getElementById("count");
+
+    let likeCount = 0;
+
+    heart.addEventListener("click", () => {
+      likeCount++;
+      count.textContent = likeCount;
+      heart.classList.add("clicked");
+      setTimeout(() => heart.classList.remove("clicked"), 300);
+    });
+  </script>
+
+</body>
+</html>
